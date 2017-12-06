@@ -5,6 +5,126 @@
  * @package unite
  */
 
+function my_custom_post_film() {
+  $labels = array(
+    'name'               => _x( 'Film', 'post type general name' ),
+    'singular_name'      => _x( 'Film', 'post type singular name' ),
+    'add_new'            => _x( 'Add New', 'Film' ),
+    'add_new_item'       => __( 'Add New Film' ),
+    'edit_item'          => __( 'Edit Film' ),
+    'new_item'           => __( 'New Film' ),
+    'all_items'          => __( 'All Film' ),
+    'view_item'          => __( 'View Film' ),
+    'search_items'       => __( 'Search Film' ),
+    'not_found'          => __( 'No films found' ),
+    'not_found_in_trash' => __( 'No films found in the Trash' ), 
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Film'
+  );
+  $args = array(
+    'labels'        => $labels,
+    'description'   => 'Holds our film and film specific data',
+    'public'        => true,
+    'menu_position' => 5,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments' ),
+    'has_archive'   => true,
+  );
+  register_post_type( 'film', $args ); 
+}
+add_action( 'init', 'my_custom_post_film'); 
+
+
+
+function my_taxonomies_genre() {
+  $labels = array(
+    'name'              => _x( 'Film Genre', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Film Genre', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search Genre' ),
+    'all_items'         => __( 'All Genre' ),
+    'parent_item'       => __( 'Parent Genre' ),
+    'parent_item_colon' => __( 'Parent Genre:' ),
+    'edit_item'         => __( 'Edit Genre' ), 
+    'update_item'       => __( 'Update Genre' ),
+    'add_new_item'      => __( 'Add New Genre' ),
+    'new_item_name'     => __( 'New Genre' ),
+    'menu_name'         => __( 'Genre' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'genre_film', 'film', $args );
+}
+add_action( 'init', 'my_taxonomies_genre', 0 );
+
+
+function my_taxonomies_country() {
+  $labels = array(
+    'name'              => _x( 'Country', 'taxonomy general name' ),
+    'singular_name'     => _x( 'Country', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search Country' ),
+    'all_items'         => __( 'All Country' ),
+    'parent_item'       => __( 'Parent Country' ),
+    'parent_item_colon' => __( 'Parent Country:' ),
+    'edit_item'         => __( 'Edit Country' ), 
+    'update_item'       => __( 'Update Country' ),
+    'add_new_item'      => __( 'Add New Country' ),
+    'new_item_name'     => __( 'New Country' ),
+    'menu_name'         => __( 'Country' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'country_film', 'film', $args );
+}
+add_action( 'init', 'my_taxonomies_country', 0 );
+
+function my_taxonomies_year() {
+  $labels = array(
+    'name'              => _x( 'year', 'taxonomy general name' ),
+    'singular_name'     => _x( 'year', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search year' ),
+    'all_items'         => __( 'All year' ),
+    'parent_item'       => __( 'Parent year' ),
+    'parent_item_colon' => __( 'Parent year:' ),
+    'edit_item'         => __( 'Edit year' ), 
+    'update_item'       => __( 'Update year' ),
+    'add_new_item'      => __( 'Add New year' ),
+    'new_item_name'     => __( 'New year' ),
+    'menu_name'         => __( 'year' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'year_film', 'film', $args );
+}
+add_action( 'init', 'my_taxonomies_year', 0 );
+
+function my_taxonomies_actors() {
+  $labels = array(
+    'name'              => _x( 'actors', 'taxonomy general name' ),
+    'singular_name'     => _x( 'actors', 'taxonomy singular name' ),
+    'search_items'      => __( 'Search actors' ),
+    'all_items'         => __( 'All actors' ),
+    'parent_item'       => __( 'Parent actors' ),
+    'parent_item_colon' => __( 'Parent actors:' ),
+    'edit_item'         => __( 'Edit actors' ), 
+    'update_item'       => __( 'Update actors' ),
+    'add_new_item'      => __( 'Add New actors' ),
+    'new_item_name'     => __( 'New actors' ),
+    'menu_name'         => __( 'actors' ),
+  );
+  $args = array(
+    'labels' => $labels,
+    'hierarchical' => true,
+  );
+  register_taxonomy( 'actors_film', 'film', $args );
+}
+add_action( 'init', 'my_taxonomies_actors', 0 );
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
